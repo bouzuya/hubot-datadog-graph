@@ -1,6 +1,6 @@
 # hubot-datadog-graph
 
-A Hubot script to take graph snapshots using the Datadog API.
+A Hubot script to take graph snapshots using the [Datadog API](http://docs.datadoghq.com/api/).
 
 ## Installation
 
