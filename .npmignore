@@ -1,0 +1,6 @@
+.hubot_history
+.travis.yml
+coverage
+gulpfile.coffee
+src
+test
