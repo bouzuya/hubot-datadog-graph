@@ -1,6 +1,6 @@
 {
   "name": "hubot-datadog-graph",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A Hubot script to take graph snapshots using the Datadog API",
   "main": "index.js",
   "scripts": {
