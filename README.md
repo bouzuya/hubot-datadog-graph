@@ -62,4 +62,5 @@ See [`src/scripts/datadog-graph.coffee`](src/scripts/datadog-graph.coffee).
 [coveralls-badge]: https://img.shields.io/coveralls/bouzuya/hubot-datadog-graph.svg
 [user]: https://github.com/bouzuya
 [mail]: mailto:m@bouzuya.net
+[url]: http://bouzuya.net
 
