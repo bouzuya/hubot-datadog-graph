@@ -7,7 +7,7 @@
 #   HUBOT_DATADOG_GRAPH_USE_SLACK
 #
 # Commands:
-#   hubot datadog graph <graph> - take a graph snapshot using the Datadog API
+#   hubot datadog graph <graph> <range> - take a graph snapshot using the Datadog API
 #   hubot datadog graph config add <graph> <query>
 #   hubot datadog graph config list
 #   hubot datadog graph config remove <graph>
