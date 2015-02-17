@@ -14,20 +14,20 @@ or
 
     bouzuya> hubot help datadog-graph
       hubot> hubot datadog graph <graph> <range> - take a graph snapshot using the Datadog API
-             hubot datadog graph config add <graph> <query>
-             hubot datadog graph config list
-             hubot datadog graph config remove <graph>
+             hubot datadog graph config - list datadog graphs (queries)
+             hubot datadog graph config add <graph> <query> - add datadog graph (query)
+             hubot datadog graph config remove <graph> - remove datadog graph (query)
 
     bouzuya> hubot datadog graph config add sushi system.load.1{*}
       hubot> OK
-    bouzuya> hubot datadog graph config list
+    bouzuya> hubot datadog graph config
       hubot> graph1
              graph2
              sushi
 
     bouzuya> hubot datadog graph config remove graph1
       hubot> OK
-    bouzuya> hubot datadog graph config list
+    bouzuya> hubot datadog graph config
       hubot> graph2
              sushi
 
@@ -41,7 +41,7 @@ See [`src/scripts/datadog-graph.coffee`](src/scripts/datadog-graph.coffee).
 
 ## Development
 
-`npm run`
+See `npm run`
 
 ## License
 
