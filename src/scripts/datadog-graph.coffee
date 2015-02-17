@@ -7,7 +7,7 @@
 #   HUBOT_DATADOG_GRAPH_WAIT
 #
 # Commands:
-#   hubot datadog graph <graph> <range> - take a graph snapshot using the Datadog API
+#   hubot datadog graph <graph>[ <range>] - take a graph snapshot using the Datadog API
 #   hubot datadog graph config - list datadog graphs (queries)
 #   hubot datadog graph config add <graph> <query> - add datadog graph (query)
 #   hubot datadog graph config remove <graph> - remove datadog graph (query)
@@ -44,12 +44,12 @@ module.exports = (robot) ->
       JSON.parse r.body
 
   # run
-  pattern1 = new RegExp(basePattern + '([-\\w]+)\\s+(\\d+)([hdw])')
+  pattern1 = new RegExp(basePattern + '([-\\w]+)(?:\\s+(\\d+)([hdw]))?')
   robot.respond pattern1, (res) ->
     queries = (robot.brain.data.queries ? {})
     g = res.match[1]
-    n = res.match[2]
-    u = res.match[3]
+    n = res.match[2] ? '1'
+    u = res.match[3] ? 'h'
     return if g is 'config'
     unless queries[g]?
       res.send "unknown graph: #{g}"

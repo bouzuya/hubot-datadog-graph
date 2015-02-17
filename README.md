@@ -13,7 +13,7 @@ or
 ## Example
 
     bouzuya> hubot help datadog-graph
-      hubot> hubot datadog graph <graph> <range> - take a graph snapshot using the Datadog API
+      hubot> hubot datadog graph <graph>[ <range>] - take a graph snapshot using the Datadog API
              hubot datadog graph config - list datadog graphs (queries)
              hubot datadog graph config add <graph> <query> - add datadog graph (query)
              hubot datadog graph config remove <graph> - remove datadog graph (query)
