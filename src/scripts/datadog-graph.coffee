@@ -4,6 +4,7 @@
 # Configuration:
 #   HUBOT_DATADOG_GRAPH_API_KEY
 #   HUBOT_DATADOG_GRAPH_APPLICATION_KEY
+#   HUBOT_DATADOG_GRAPH_USE_SLACK
 #
 # Commands:
 #   hubot datadog graph <graph> - take a graph snapshot using the Datadog API
@@ -21,6 +22,7 @@ parseConfig = require 'hubot-config'
 config = parseConfig 'datadog-graph',
   apiKey: null
   applicationKey: null
+  useSlack: false
 
 module.exports = (robot) ->
   basePattern = 'd(?:ata)?d(?:og)?\\s+(?:graph|s(?:nap)?s(?:hot)?)\\s+'
@@ -64,7 +66,8 @@ module.exports = (robot) ->
 
     callGraphSnapshotAPI query, start, end
     .then (json) ->
-      res.send json.snapshot_url
+      suffix = if config.useSlack then '#png' else ''
+      res.send json.snapshot_url + suffix
     .catch (e) ->
       res.robot.logger.error e
       res.send 'hubot-datadog-graph: error'
