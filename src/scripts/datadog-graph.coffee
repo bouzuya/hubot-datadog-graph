@@ -26,7 +26,7 @@ config = parseConfig 'datadog-graph',
 
 module.exports = (robot) ->
   config.wait = parseInt config.wait, 10
-  basePattern = 'd(?:ata)?d(?:og)?\\s+(?:graph|s(?:nap)?s(?:hot)?)\\s+'
+  basePattern = 'd(?:ata)?d(?:og)?\\s+(?:g(?:raph)?|s(?:nap)?s(?:hot)?)\\s+'
   robot.brain.data.queries = {}
 
   callGraphSnapshotAPI = (query, start, end) ->
