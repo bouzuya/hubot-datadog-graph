@@ -44,7 +44,7 @@ module.exports = (robot) ->
       JSON.parse r.body
 
   # run
-  pattern1 = new RegExp(basePattern + '([-\\w]+)(?:\\s+(\\d+)([hdw]))?')
+  pattern1 = new RegExp(basePattern + '([-\\w]+)(?:\\s+(\\d+)([hdw]|mo))?')
   robot.respond pattern1, (res) ->
     queries = (robot.brain.data.queries ? {})
     g = res.match[1]
@@ -61,6 +61,7 @@ module.exports = (robot) ->
       when 'h' then 'hours'
       when 'd' then 'days'
       when 'w' then 'weeks'
+      when 'mo' then 'months'
     e = moment()
     start = moment(e).subtract(number, unit).format('X')
     end = e.format('X')
