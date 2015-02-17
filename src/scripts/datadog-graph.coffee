@@ -4,6 +4,7 @@
 # Configuration:
 #   HUBOT_DATADOG_GRAPH_API_KEY
 #   HUBOT_DATADOG_GRAPH_APPLICATION_KEY
+#   HUBOT_DATADOG_GRAPH_WAIT
 #
 # Commands:
 #   hubot datadog graph <graph> <range> - take a graph snapshot using the Datadog API
@@ -21,8 +22,10 @@ parseConfig = require 'hubot-config'
 config = parseConfig 'datadog-graph',
   apiKey: null
   applicationKey: null
+  wait: '1000'
 
 module.exports = (robot) ->
+  config.wait = parseInt config.wait, 10
   basePattern = 'd(?:ata)?d(?:og)?\\s+(?:graph|s(?:nap)?s(?:hot)?)\\s+'
   robot.brain.data.queries = {}
 
@@ -64,7 +67,7 @@ module.exports = (robot) ->
 
     callGraphSnapshotAPI query, start, end
     .then (json) ->
-      res.send json.snapshot_url
+      setTimeout (-> res.send json.snapshot_url), config.wait
     .catch (e) ->
       res.robot.logger.error e
       res.send 'hubot-datadog-graph: error'
