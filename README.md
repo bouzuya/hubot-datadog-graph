@@ -13,7 +13,10 @@ or
 ## Example
 
     bouzuya> hubot help datadog-graph
-      hubot> hubot datadog graph - take a graph snapshot using the Datadog API
+      hubot> hubot datadog graph <graph> <range> - take a graph snapshot using the Datadog API
+             hubot datadog graph config add <graph> <query>
+             hubot datadog graph config list
+             hubot datadog graph config remove <graph>
 
     bouzuya> hubot datadog graph config add sushi system.load.1{*}
       hubot> OK
