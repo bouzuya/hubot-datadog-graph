@@ -8,9 +8,9 @@
 #
 # Commands:
 #   hubot datadog graph <graph> <range> - take a graph snapshot using the Datadog API
-#   hubot datadog graph config add <graph> <query>
-#   hubot datadog graph config list
-#   hubot datadog graph config remove <graph>
+#   hubot datadog graph config - list datadog graphs (queries)
+#   hubot datadog graph config add <graph> <query> - add datadog graph (query)
+#   hubot datadog graph config remove <graph> - remove datadog graph (query)
 #
 # Author:
 #   bouzuya <m@bouzuya.net>
@@ -72,6 +72,12 @@ module.exports = (robot) ->
       res.robot.logger.error e
       res.send 'hubot-datadog-graph: error'
 
+  # config
+  pattern3 = new RegExp(basePattern + 'config$')
+  robot.respond pattern3, (res) ->
+    queries = (robot.brain.data?.queries ? {})
+    res.send ("#{k} #{v}" for k, v of queries).join '\n'
+
   # config add
   pattern2 = new RegExp(basePattern + 'config\\s+add\\s+([-\\w]+)\\s+(.+)$')
   robot.respond pattern2, (res) ->
@@ -79,12 +85,6 @@ module.exports = (robot) ->
     query = res.match[2]
     robot.brain.data.queries[graph] = query
     res.send 'OK'
-
-  # config list
-  pattern3 = new RegExp(basePattern + 'config\\s+list')
-  robot.respond pattern3, (res) ->
-    queries = (robot.brain.data.queries ? {})
-    res.send ("#{k} #{v}" for k, v of queries).join '\n'
 
   # config remove
   pattern4 = new RegExp(basePattern + 'config\\s+remove\\s+([-\\w]+)')
