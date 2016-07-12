@@ -66,8 +66,8 @@ module.exports = (robot) ->
     start = moment(e).subtract(number, unit).format('X')
     end = e.format('X')
 
-    callGraphSnapshotAPI query, start, end
-    .then (json) ->
+    callGraphSnapshotAPIResult = callGraphSnapshotAPI query, start, end
+    callGraphSnapshotAPIResult.then (json) ->
       setTimeout (-> res.send json.snapshot_url), config.wait
     .catch (e) ->
       res.robot.logger.error e
